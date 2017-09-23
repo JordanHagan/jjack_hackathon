@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Autoclave} from "../models/autoclave.model";
 
 @Component({
   selector: 'jjack-root',
@@ -6,5 +7,10 @@ import {Component} from '@angular/core';
   styleUrls: ['./root.component.css']
 })
 export class RootComponent {
-  timestamp = new Date().toLocaleDateString()
+  autoclaves: Autoclave[] = [
+    {name: 'Sparky', id: '150'},
+    {name: 'Trogdor', id: '250'},
+    {name: 'Ragnaros', id: '350'},
+    {name: 'Incendius', id: '450'},
+  ]
 }
