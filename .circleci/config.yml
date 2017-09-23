@@ -10,5 +10,5 @@ jobs:
       - run: npm install
       - run: ng build
       - deploy:
-        name: Deploy to S3
-        command: aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
+          name: Deploy to S3
+          command: aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
