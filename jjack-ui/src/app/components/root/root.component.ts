@@ -2,8 +2,10 @@ import {AfterViewChecked, Component, OnInit} from '@angular/core'
 import {Agitator} from '../../models/agitator.model'
 import {Autoclave} from '../../models/autoclave.model'
 import {HttpService} from '../../services/http.service'
+import {particles} from '../../../assets/particles'
 
 declare const $: any
+declare const particlesJS: any
 
 @Component({
   selector: 'jjack-root',
@@ -21,7 +23,10 @@ export class RootComponent implements AfterViewChecked, OnInit {
   }
 
   ngAfterViewChecked() {
-    if (!this.bootstrapped) $(document).foundation()
+    if (!this.bootstrapped) {
+      $(document).foundation()
+      particlesJS('particles-js', particles);
+    }
     this.bootstrapped = true
   }
 

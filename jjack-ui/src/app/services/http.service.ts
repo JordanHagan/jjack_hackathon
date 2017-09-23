@@ -8,12 +8,12 @@ const fixtureData = [
     selected: true,
     agitators: [
       {name: 'A', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 592},
-      {name: 'B', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 592},
-      {name: 'C', open: false, status: 'warning', lastUpdate: new Date(), uptime: 592},
-      {name: 'D', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 592},
-      {name: 'E', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 592},
-      {name: 'F', open: false, status: 'warning', lastUpdate: new Date(), uptime: 592},
-      {name: 'G', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 592},
+      {name: 'B', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 78},
+      {name: 'C', open: false, status: 'warning', lastUpdate: new Date(), uptime: 1184},
+      {name: 'D', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 924},
+      {name: 'E', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 990},
+      {name: 'F', open: false, status: 'warning', lastUpdate: new Date(), uptime: 427},
+      {name: 'G', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 114},
     ]
   },
   {
@@ -21,13 +21,13 @@ const fixtureData = [
     id: '250',
     selected: false,
     agitators: [
-      {name: 'A', open: false, status: 'danger', lastUpdate: new Date(), uptime: 324},
+      {name: 'A', open: false, status: 'danger', lastUpdate: new Date(), uptime: 1544},
       {name: 'B', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 324},
-      {name: 'C', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 324},
-      {name: 'D', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 324},
-      {name: 'E', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 324},
-      {name: 'F', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 324},
-      {name: 'G', open: false, status: 'warning', lastUpdate: new Date(), uptime: 324},
+      {name: 'C', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 1142},
+      {name: 'D', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 644},
+      {name: 'E', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 400},
+      {name: 'F', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 971},
+      {name: 'G', open: false, status: 'warning', lastUpdate: new Date(), uptime: 538},
     ]
   },
   {
@@ -35,13 +35,13 @@ const fixtureData = [
     id: '350',
     selected: false,
     agitators: [
-      {name: 'A', open: false, status: 'danger', lastUpdate: new Date(), uptime: 788},
-      {name: 'B', open: false, status: 'danger', lastUpdate: new Date(), uptime: 788},
-      {name: 'C', open: false, status: 'offline', lastUpdate: new Date(), uptime: 788},
-      {name: 'D', open: false, status: 'warning', lastUpdate: new Date(), uptime: 788},
-      {name: 'E', open: false, status: 'warning', lastUpdate: new Date(), uptime: 788},
-      {name: 'F', open: false, status: 'warning', lastUpdate: new Date(), uptime: 788},
-      {name: 'G', open: false, status: 'danger', lastUpdate: new Date(), uptime: 788},
+      {name: 'A', open: false, status: 'danger', lastUpdate: new Date(), uptime: 2094},
+      {name: 'B', open: false, status: 'danger', lastUpdate: new Date(), uptime: 448},
+      {name: 'C', open: false, status: 'offline', lastUpdate: new Date(), uptime: 0},
+      {name: 'D', open: false, status: 'warning', lastUpdate: new Date(), uptime: 556},
+      {name: 'E', open: false, status: 'warning', lastUpdate: new Date(), uptime: 587},
+      {name: 'F', open: false, status: 'warning', lastUpdate: new Date(), uptime: 1002},
+      {name: 'G', open: false, status: 'danger', lastUpdate: new Date(), uptime: 1455},
     ]
   },
   {
