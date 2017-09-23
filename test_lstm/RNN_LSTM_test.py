@@ -41,7 +41,7 @@ class RNN:
         self.y_test = self.test.pop('target')
         self.X_train = self.train[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure']].values
         self.X_test = self.test[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure']].values
-
+    
 
     def make_labels(self):
         print('Lable encoding...')
