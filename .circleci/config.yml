@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run: sudo npm install -g @angular/cli
-      - run: npm install
-      - run: ng build
+      - run: cd jjack-ui && npm install
+      - run: cd jjack-ui && ng build
       - deploy:
           name: Deploy to S3
           command: aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
