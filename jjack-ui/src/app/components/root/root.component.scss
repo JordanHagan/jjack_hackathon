@@ -1,1 +1,45 @@
 @import '../../../settings';
+
+li a {
+  color: black;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+
+  & > div:last-child {
+    margin-right: 20px;
+    text-align: right;
+  }
+}
+
+.healthy a {
+  background-color: $success-color;
+  .accordion-title:hover {
+    background-color: darken($success-color, 5%);
+  }
+}
+
+.warning a {
+  background-color: $warning-color;
+  .accordion-title:hover {
+    background-color: darken($warning-color, 5%);
+  }
+}
+
+.danger a {
+  background-color: $input-error-color;
+  .accordion-title:hover {
+    background-color: darken($input-error-color, 5%);
+  }
+}
+
+.offline a {
+  background-color: $light-gray;
+  .accordion-title:hover {
+    background-color: darken($light-gray, 5%);
+  }
+}
+
+.accordion-content {
+  position: relative;
+}

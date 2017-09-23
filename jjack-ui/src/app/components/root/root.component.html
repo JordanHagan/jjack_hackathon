@@ -1,13 +1,25 @@
+<div class="row columns">
+    <h1>Autoclave Dashboard for Pueblo Viejo</h1>
+</div>
 <div class="row">
     <div class="columns">
         <ul class="accordion" data-accordion data-allow-all-closed="true">
             <li *ngFor="let autoclave of autoclaves"
                 class="accordion-item"
+                [ngClass]="autoclave.status"
                 data-accordion-item>
                 <a href="#" class="accordion-title"
-                   (click)="handleClick($event, autoclave)">{{autoclave.name}}</a>
-                <div class="accordion-content" data-tab-content>
-                    <div>{{autoclave.name}} ({{autoclave.id}})</div>
+                   (click)="handleClick($event, autoclave)">
+                    <div>
+                        <h4>{{autoclave.name}} ({{autoclave.id}})</h4>
+                        Status: {{autoclave.status}}
+                    </div>
+                    <div>
+                        <h5>Current uptime: {{autoclave.uptime}} days</h5>
+                        <div>Last updated: {{autoclave.lastUpdate.toLocaleDateString()}}</div>
+                    </div>
+                </a>
+                <div class="accordion-content spinner" data-tab-content>
                     <jjack-plotly *ngIf="autoclave.open"></jjack-plotly>
                 </div>
             </li>

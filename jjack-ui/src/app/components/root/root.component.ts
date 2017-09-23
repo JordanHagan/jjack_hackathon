@@ -10,10 +10,10 @@ declare const $: any
 })
 export class RootComponent implements AfterViewChecked {
   autoclaves: Autoclave[] = [
-    {name: 'Sparky', id: '150', open: false},
-    {name: 'Trogdor', id: '250', open: false},
-    {name: 'Ragnaros', id: '350', open: false},
-    {name: 'Incendius', id: '450', open: false},
+    {name: 'Sparky', id: '150', open: false, status: 'healthy', lastUpdate: new Date(), uptime: 592},
+    {name: 'Trogdor', id: '250', open: false, status: 'warning', lastUpdate: new Date(), uptime: 324},
+    {name: 'Ragnaros', id: '350', open: false, status: 'danger', lastUpdate: new Date(), uptime: 788},
+    {name: 'Incendius', id: '450', open: false, status: 'offline', lastUpdate: new Date(), uptime: 0},
   ]
   bootstrapped: boolean
 
