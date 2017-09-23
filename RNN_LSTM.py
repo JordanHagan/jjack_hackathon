@@ -1,15 +1,16 @@
-import spacy, re
+
 import pandas as pd
 import numpy as np
-from sqlalchemy import create_engine
 from string import punctuation, printable
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler, StandardScaler
 from sklearn.model_selection import train_test_split
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.layers import Embedding, LSTM, Dense, Dropout, Conv1D, MaxPooling1D
 from keras.models import Sequential
 from imblearn.over_sampling import SMOTE
+import datetime
+from matplotlib import pyplot
 
 class RNN:
     def __init__(self):
@@ -22,51 +23,45 @@ class RNN:
         self.y_test = None
         self.model = None
         self.score = None
-        self.accuracy = None
-
+        self.history = None
 
     def df_from_csv(self):
         '''
         Bring in the data and split X and y values
         '''
         print('Bringing data in...')
-        self.df = pd.read_csv('test_lstm/test.csv')
-        self.X = self.df[self.df.columns[1]].values
-        self.y = self.df[self.df.columns[2]].values
+        self.df = pd.read_pickle('df_250.pkl')
+        self.df = self.df.set_index('Date')
+        fail_date = datetime.datetime(2017, 11, 14)
+        self.df['target'] = (fail_date - self.df.index).days
+        self.df = self.df.apply(lambda df: pd.to_numeric(df, errors='coerce')).fillna(0)
+        self.train = self.df[self.df.index <= datetime.datetime(2015,2,1)]
+        self.test = self.df[self.df.index > datetime.datetime(2015,2,1)]
+        self.y_train = self.train.pop('target')
+        self.y_test = self.test.pop('target')
+        self.X_train = self.train[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure', 'diff']].values
+        self.X_test = self.test[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure', 'diff']].values
 
     def make_labels(self):
         print('Lable encoding...')
         le = LabelEncoder()
         self.y = le.fit_transform(self.y)
 
+    def min_max_scaler(self):
+        print('Scalin Data...')
+        X_scaler = MinMaxScaler(feature_range=(0, 1))
+        self.X_train = X_scaler.fit_transform(self.X_train)
+        self.X_test = X_scaler.transform(self.X_test)
 
-#############################
-    def clean_text(self):
-        '''
-        Clean and Lemmatize X Text Values
-        '''
-        punc_dict = {ord(punc): None for punc in punctuation}
-        nlp = spacy.load("en")
-        for i, line in enumerate(self.X):
-            line = line.translate(punc_dict)
-            clean_doc = "".join([char for char in line if char in printable])
-            line = nlp(clean_doc)
-            line_list = [re.sub("\W+","",token.lemma_.lower()) for token in line if token.is_stop == False]
-            self.X[i] = ' '.join(line_list)
+    def st_scaler(self):
+        print('Scalin Data...')
+        X_scaler = StandardScaler()
+        self.X_train = X_scaler.fit_transform(self.X_train)
+        self.X_test = X_scaler.transform(self.X_test)
 
-    def tokenize(self):
-        '''
-        Tokenize and Pad the clean data to use in the Neural Network
-        '''
-        tokenizer = Tokenizer(num_words=600)
-        tokenizer.fit_on_texts(self.X)
-        X_sequences = tokenizer.texts_to_sequences(self.X)
-        self.X = pad_sequences(X_sequences, maxlen=500)
-#########################
-
-    def train_test_split(self):
-        print('Test/Train splitting...')
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.30)
+    def break_out(self):
+        self.X_train = self.X_train.reshape((self.X_train.shape[0], 1, self.X_train.shape[1]))
+        self.X_test = self.X_test.reshape((self.X_test.shape[0], 1, self.X_test.shape[1]))
 
     def resample(self):
         '''
@@ -79,26 +74,31 @@ class RNN:
     def lstm(self):
         print('LSTMing...')
         self.model = Sequential()
-        self.model.add(Embedding(600, 128, input_length=500))
-        self.model.add(Conv1D(64, 5, activation='relu'))
-        self.model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
-        self.model.add(Dense(6, activation='softmax'))
-        self.model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-        self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=7)
+        self.model.add(LSTM(50, input_shape=(self.X_train.shape[1], self.X_train.shape[2])))
+        self.model.add(Dense(1))
+        self.model.add(Dense(1))
+        self.model.compile(loss='mean_squared_logarithmic_error', optimizer='adam')
+        #self.model.add(Conv1D(64, 5, activation='relu'))
+        #self.model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
+        #self.model.add(Dense(6, activation='softmax'))
+        self.history = self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=100, validation_data=(self.X_test, self.y_test))
 
     def get_score(self):
-        self.score = self.model.evaluate(self.X_test, self.y_test)[0]
-        self.accuracy = self.model.evaluate(self.X_test, self.y_test)[1]
+        self.score = self.model.evaluate(self.X_test, self.y_test)
+
+    def plots(self):
+        pyplot.plot(self.history.history['loss'], label='train')
+        pyplot.plot(self.history.history['val_loss'], label='test')
+        pyplot.legend()
+        pyplot.show()
 
 
 if __name__ == '__main__':
     rnn = RNN()
     rnn.df_from_csv()
-    rnn.make_labels()
-    rnn.clean_text()
-    rnn.tokenize()
-    rnn.train_test_split()
+    rnn.min_max_scaler()
+    rnn.break_out()
     rnn.lstm()
     rnn.get_score()
     print("Score: ", rnn.score)
-    print("Accuracy: ", rnn.accuracy)
+    rnn.plots()
