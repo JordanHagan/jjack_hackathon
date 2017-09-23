@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run: sudo apt-get update
+      - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+      - run: sudo apt-get install -y nodejs
+      - run: sudo pip install awscli
+      - run: sudo npm install --unsafe-perm -g @angular/cli
+      - run: cd jjack-ui && npm install
+      - run: cd jjack-ui && ng build
+      - deploy:
+          name: Deploy to S3
+          command: aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete

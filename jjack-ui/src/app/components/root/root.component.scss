@@ -1,0 +1,69 @@
+@import '../../../settings';
+
+.hidden {
+  display: none;
+}
+
+ul {
+  background-color: transparent;
+  border: none;
+}
+
+.tabs-title {
+  background-color: $light-purple;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  &.is-active {
+    background-color: white;
+  }
+}
+
+li {
+  a {
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    color: black;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+
+    & > div:last-child {
+      margin-right: 20px;
+      text-align: right;
+    }
+  }
+}
+
+.healthy a {
+  background-color: $success-color;
+  .accordion-title:hover {
+    background-color: darken($success-color, 5%);
+  }
+}
+
+.warning a {
+  background-color: $warning-color;
+  .accordion-title:hover {
+    background-color: darken($warning-color, 5%);
+  }
+}
+
+.danger a {
+  background-color: $input-error-color;
+  .accordion-title:hover {
+    background-color: darken($input-error-color, 5%);
+  }
+}
+
+.offline a {
+  background-color: $medium-gray;
+  .accordion-title:hover {
+    background-color: darken($light-gray, 5%);
+  }
+}
+
+.accordion-content {
+  position: relative;
+}

@@ -1,0 +1,43 @@
+<div class="row columns">
+    <h1>Autoclave Dashboard for Pueblo Viejo</h1>
+</div>
+
+<div class="row">
+    <div class="columns">
+        <ul class="tabs" data-tabs id="example-tabs">
+            <li class="tabs-title"
+                *ngFor="let autoclave of autoclaves; let i = index"
+                [ngClass]="{'is-active': autoclave.selected}">
+                <a href="#panel{{i}}" (click)="handleTabClick(autoclave)">{{autoclave.name}} ({{autoclave.id}})</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="tabs-content columns"
+         *ngFor="let autoclave of autoclaves"
+         [ngClass]="{hidden: !autoclave.selected}">
+        <ul class="accordion" data-accordion data-allow-all-closed="true">
+            <li *ngFor="let agitator of autoclave.agitators"
+                class="accordion-item"
+                [ngClass]="agitator.status"
+                data-accordion-item>
+                <a href="#" class="accordion-title"
+                   (click)="handleRowClick($event, agitator)">
+                    <div>
+                        <h4>{{agitator.name}}</h4>
+                        Status: {{agitator.status}}
+                    </div>
+                    <div>
+                        <h5>Current uptime: {{agitator.uptime}} days</h5>
+                        <div>Last updated: {{agitator.lastUpdate.toLocaleDateString()}}</div>
+                    </div>
+                </a>
+                <div class="accordion-content spinner" data-tab-content>
+                    <jjack-plotly *ngIf="agitator.open"></jjack-plotly>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
