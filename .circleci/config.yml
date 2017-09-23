@@ -1,20 +1,20 @@
-version: 2.0
+version: 2
 jobs:
   build:
-    working_directory: ~/jjack-ui
+    working_directory: /jjack-ui
     docker:
-      -image: circleci/node:7.10.0
+      - image: circleci/node: 7.10.0
     steps:
       - checkout
       - run:
-        name: Install Angular CLI
-        command: npm install -g @angular/cli
+          name: Install Angular CLI
+          command: npm install -g @angular/cli
       - run:
-        name: Install Libraries
-        command: npm install
+          name: Install Libraries
+          command: npm install
       - run:
-        name: Build
-        command: ng build
+          name: Build
+          command: ng build
       - deploy:
-        name: Deploy to S3
-        command: aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
+          name: Deploy to S3
+          command: aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
