@@ -9,20 +9,25 @@ ul {
   border: none;
 }
 
+.tabs-content {
+  border: none;
+}
+
 .tabs-title {
-  background-color: $light-purple;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top: 1px solid $black;
+  border-right: 1px solid $black;
+
+  &:first-child {
+    border-left: 1px solid black;
+  }
 
   &.is-active {
-    background-color: white;
+    background-color: $primary-color;
   }
 }
 
 li {
   a {
-    border-top-left-radius: 5px !important;
-    border-top-right-radius: 5px !important;
     color: black;
     font-size: 15px;
     display: flex;
@@ -51,16 +56,16 @@ li {
 }
 
 .danger a {
-  background-color: $input-error-color;
+  background-color: $alert-color;
   .accordion-title:hover {
-    background-color: darken($input-error-color, 5%);
+    background-color: darken($alert-color, 5%);
   }
 }
 
 .offline a {
-  background-color: $medium-gray;
+  background-color: $secondary-color;
   .accordion-title:hover {
-    background-color: darken($light-gray, 5%);
+    background-color: darken($secondary-color, 5%);
   }
 }
 
