@@ -30,15 +30,14 @@ class RNN:
         Bring in the data and split X and y values
         '''
         print('Bringing data in...')
-        self.df = pd.read_pickle('B_350.pkl')
-        self.train = self.df[self.df.index <= datetime.datetime(2015,2,1)]
-        self.test = self.df[self.df.index > datetime.datetime(2015,2,1)]
+        self.df = pd.read_pickle('all_together_now.pkl')
+        self.train = self.df[self.df.index <= datetime.datetime(2016,1,1)]
+        self.test = self.df[self.df.index > datetime.datetime(2016,1,1)]
+        print(self.df.columns)
         self.y_train = self.train.pop('target')
         self.y_test = self.test.pop('target')
-        self.X_train = self.train[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure']].values
-        self.X_test = self.test[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure']].values
-        print(self.y_train)
-        print(self.X_train)
+        self.X_train = self.train[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure', 'Agitator Vibration', 'Agitator Cooling Water', 'Agitator temperature', 'Autoclave Compartment temperature']].values
+        self.X_test = self.test[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure', 'Agitator Vibration', 'Agitator Cooling Water', 'Agitator temperature', 'Autoclave Compartment temperature']].values
 
     def make_labels(self):
         print('Lable encoding...')
@@ -73,13 +72,14 @@ class RNN:
         print('LSTMing...')
         self.model = Sequential()
         self.model.add(LSTM(50, input_shape=(self.X_train.shape[1], self.X_train.shape[2])))
+        #self.model.add(LSTM(25))
         self.model.add(Dense(1))
         self.model.add(Dense(1))
         self.model.compile(loss='mean_squared_logarithmic_error', optimizer='adam')
         #self.model.add(Conv1D(64, 5, activation='relu'))
         #self.model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
         #self.model.add(Dense(6, activation='softmax'))
-        self.history = self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=100, validation_data=(self.X_test, self.y_test))
+        self.history = self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=40, validation_data=(self.X_test, self.y_test))
 
     def get_score(self):
         self.score = self.model.evaluate(self.X_test, self.y_test)
@@ -94,9 +94,9 @@ class RNN:
 if __name__ == '__main__':
     rnn = RNN()
     rnn.df_from_csv()
-    # rnn.min_max_scaler()
-    # rnn.break_out()
-    # rnn.lstm()
-    # rnn.get_score()
-    # print("Score: ", rnn.score)
-    # rnn.plots()
+    rnn.min_max_scaler()
+    rnn.break_out()
+    rnn.lstm()
+    rnn.get_score()
+    print("Score: ", rnn.score)
+    rnn.plots()
