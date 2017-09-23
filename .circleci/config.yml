@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:7.10.0
-    working_directory: /jjack-ui
     steps:
       - checkout
       - run: npm install -g @angular/cli
