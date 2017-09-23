@@ -5,4 +5,5 @@ export interface Autoclave {
   id: string
   agitators: Agitator[]
   selected: boolean
+  lastStart: Date
 }

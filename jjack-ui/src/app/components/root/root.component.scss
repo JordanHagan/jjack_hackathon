@@ -4,13 +4,32 @@
   display: none;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    align-self: baseline;
+  }
+}
+
 ul {
   background-color: transparent;
   border: none;
 }
 
+h4 {
+  text-align: left;
+}
+
+.columns {
+  padding: 0;
+}
+
 .tabs-content {
-  border: none;
+  border: 1px solid $black;
+  padding: 5px;
+  background-color: $primary-color;
 }
 
 .tabs-title {
@@ -42,6 +61,11 @@ li {
   }
 }
 
+.accordion-title {
+  display: flex;
+  justify-content: space-between;
+}
+
 .healthy a {
   background-color: $success-color;
   .accordion-title:hover {
@@ -70,6 +94,6 @@ li {
   }
 }
 
-.accordion-content {
+.chart-container {
   position: relative;
 }

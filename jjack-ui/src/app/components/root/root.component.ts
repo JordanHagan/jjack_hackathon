@@ -19,7 +19,7 @@ export class RootComponent implements AfterViewChecked, OnInit {
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.httpService.get('/data').subscribe(data => this.autoclaves = data)
+    this.httpService.get('localhost:4200/nothing').subscribe(data => this.autoclaves = data)
   }
 
   ngAfterViewChecked() {
@@ -28,6 +28,10 @@ export class RootComponent implements AfterViewChecked, OnInit {
       particlesJS('particles-js', particles);
     }
     this.bootstrapped = true
+  }
+
+  now() {
+    return new Date().toLocaleDateString()
   }
 
   handleTabClick(autoclave: Autoclave) {

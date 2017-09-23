@@ -1,5 +1,6 @@
-<div class="row columns">
-    <h1>Autoclave Dashboard for Pueblo Viejo</h1>
+<div class="row columns header">
+    <div><h1>Autoclave Dashboard for Pueblo Viejo</h1></div>
+    <div>Last updated: {{now()}}</div>
 </div>
 
 <div class="row">
@@ -18,6 +19,8 @@
     <div class="tabs-content columns"
          *ngFor="let autoclave of autoclaves"
          [ngClass]="{hidden: !autoclave.selected}">
+
+        <h5>Current uptime: {{autoclave.lastStart.toLocaleDateString()}} days</h5>
         <ul class="accordion" data-accordion data-allow-all-closed="true">
             <li *ngFor="let agitator of autoclave.agitators"
                 class="accordion-item"
@@ -26,16 +29,20 @@
                 <a href="#" class="accordion-title"
                    (click)="handleRowClick($event, agitator)">
                     <div>
-                        <h4>{{agitator.name}}</h4>
+                        <h4>Agitator {{agitator.name}}</h4>
                         Status: {{agitator.status}}
                     </div>
                     <div>
-                        <h5>Current uptime: {{agitator.uptime}} days</h5>
-                        <div>Last updated: {{agitator.lastUpdate.toLocaleDateString()}}</div>
+                        Temperature: {{agitator.temp}}&deg;<br/>
+                        Compartment Temperature: {{agitator.compartmentTemp}}&deg;<br/>
+                        Cooling Water: {{agitator.coolingWater}}%<br/>
+                        Vibrations: {{agitator.temp}} GHz
                     </div>
                 </a>
-                <div class="accordion-content spinner" data-tab-content>
-                    <jjack-plotly *ngIf="agitator.open"></jjack-plotly>
+                <div class="accordion-content" data-tab-content>
+                    <div class="chart-container spinner">
+                        <jjack-plotly *ngIf="agitator.open"></jjack-plotly>
+                    </div>
                 </div>
             </li>
         </ul>
