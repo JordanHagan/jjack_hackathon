@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="columns">
+        <ul class="accordion" data-accordion data-allow-all-closed="true">
+            <li *ngFor="let autoclave of autoclaves"
+                class="accordion-item"
+                data-accordion-item>
+                <a href="#" class="accordion-title"
+                   (click)="handleClick($event, autoclave)">{{autoclave.name}}</a>
+                <div class="accordion-content" data-tab-content>
+                    <div>{{autoclave.name}} ({{autoclave.id}})</div>
+                    <jjack-plotly *ngIf="autoclave.open"></jjack-plotly>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
