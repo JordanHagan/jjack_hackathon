@@ -1,5 +1,24 @@
 @import '../../../settings';
 
+.hidden {
+  display: none;
+}
+
+ul {
+  background-color: transparent;
+  border: none;
+}
+
+.tabs-title {
+  background-color: $light-purple;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  &.is-active {
+    background-color: white;
+  }
+}
+
 li {
   a {
     border-top-left-radius: 5px !important;
@@ -39,7 +58,7 @@ li {
 }
 
 .offline a {
-  background-color: $light-gray;
+  background-color: $medium-gray;
   .accordion-title:hover {
     background-color: darken($light-gray, 5%);
   }

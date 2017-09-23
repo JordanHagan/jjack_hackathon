@@ -1,8 +1,8 @@
+import {Agitator} from './agitator.model'
+
 export interface Autoclave {
-  id: string
   name: string
-  open: boolean
-  status: string
-  lastUpdate: Date
-  uptime: number
+  id: string
+  agitators: Agitator[]
+  selected: boolean
 }
