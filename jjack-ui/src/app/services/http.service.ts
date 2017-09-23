@@ -152,7 +152,7 @@ export class HttpService {
       Object.keys(apiData[autoclaveKey].agitators).forEach(agitatorKey => {
         const apiAgitator = apiData[autoclaveKey].agitators[agitatorKey]
         const agitator = {
-          name: agitatorKey, open: false, status: 'healthy', temp: apiAgitator.temperature,
+          name: agitatorKey, open: false, status: this.getStatus(apiAgitator.daysToFailure), temp: apiAgitator.temperature,
           coolingWater: apiAgitator.coolingWater, compartmentTemp: apiAgitator.compartmentTemperature,
           vibration: apiAgitator.vibration, daysToFailure: apiAgitator.daysToFailure
         }
@@ -165,5 +165,14 @@ export class HttpService {
     })
     autoclaves[0].selected = true
     return autoclaves
+  }
+
+  getStatus(daysToFailure: number): string {
+    if(daysToFailure <= 10) {
+      return 'danger'
+    } else if(daysToFailure <= 25) {
+      return 'warning'
+    }
+    return 'healthy'
   }
 }
