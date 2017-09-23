@@ -30,17 +30,15 @@ class RNN:
         Bring in the data and split X and y values
         '''
         print('Bringing data in...')
-        self.df = pd.read_pickle('df_250.pkl')
-        self.df = self.df.set_index('Date')
-        fail_date = datetime.datetime(2017, 11, 14)
-        self.df['target'] = (fail_date - self.df.index).days
-        self.df = self.df.apply(lambda df: pd.to_numeric(df, errors='coerce')).fillna(0)
+        self.df = pd.read_pickle('B_350.pkl')
         self.train = self.df[self.df.index <= datetime.datetime(2015,2,1)]
         self.test = self.df[self.df.index > datetime.datetime(2015,2,1)]
         self.y_train = self.train.pop('target')
         self.y_test = self.test.pop('target')
-        self.X_train = self.train[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure', 'diff']].values
-        self.X_test = self.test[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure', 'diff']].values
+        self.X_train = self.train[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure']].values
+        self.X_test = self.test[['Autoclave Level', 'Autoclave Total Feed', 'Autoclave Pressure']].values
+        print(self.y_train)
+        print(self.X_train)
 
     def make_labels(self):
         print('Lable encoding...')
@@ -96,9 +94,9 @@ class RNN:
 if __name__ == '__main__':
     rnn = RNN()
     rnn.df_from_csv()
-    rnn.min_max_scaler()
-    rnn.break_out()
-    rnn.lstm()
-    rnn.get_score()
-    print("Score: ", rnn.score)
-    rnn.plots()
+    # rnn.min_max_scaler()
+    # rnn.break_out()
+    # rnn.lstm()
+    # rnn.get_score()
+    # print("Score: ", rnn.score)
+    # rnn.plots()
