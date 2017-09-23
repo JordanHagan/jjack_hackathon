@@ -1,0 +1,5 @@
+deployment:
+  prod:
+    branch: master
+    commands:
+      - aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
