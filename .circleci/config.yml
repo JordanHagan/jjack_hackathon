@@ -1,3 +1,21 @@
+version: 2.0
+machine:
+  node:
+    version: 8.5.0
+dependencies:
+  pre:
+    - npm install angular-cli@latest -g
+jobs:
+  build:
+    working-directory: ~/jjack-ui
+    steps:
+      - checkout
+      - run:
+        name: install deps
+        command: npm install
+      - run:
+        name: build ui
+        comand: ng build
 deployment:
   prod:
     branch: master
