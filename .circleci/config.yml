@@ -9,8 +9,8 @@ jobs:
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       - run: sudo apt-get install -y nodejs
       - run: sudo pip install awscli
-      - run: sudo npm install -g @angular/cli
-      - run: cd jjack-ui && npm install
+      - run: sudo npm install -g @angular/cli --silent
+      - run: cd jjack-ui && npm install --silent
       - run: cd jjack-ui && ng build
       - deploy:
           name: Deploy to S3
