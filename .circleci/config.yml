@@ -5,17 +5,9 @@ machine:
 dependencies:
   pre:
     - npm install angular-cli@latest -g
-jobs:
-  build:
-    working-directory: ~/jjack-ui
-    steps:
-      - checkout
-      - run:
-        name: install deps
-        command: npm install
-      - run:
-        name: build ui
-        comand: ng build
+compile:
+  override:
+    - cd jjack-ui && npm install && ng build
 deployment:
   prod:
     branch: master
