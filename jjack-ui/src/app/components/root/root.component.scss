@@ -1,14 +1,19 @@
 @import '../../../settings';
 
-li a {
-  color: black;
-  font-size: 15px;
-  display: flex;
-  justify-content: space-between;
+li {
+  a {
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    color: black;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
 
-  & > div:last-child {
-    margin-right: 20px;
-    text-align: right;
+    & > div:last-child {
+      margin-right: 20px;
+      text-align: right;
+    }
   }
 }
 
