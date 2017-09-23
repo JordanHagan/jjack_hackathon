@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core'
 
 import {RootComponent} from './components/root/root.component'
 import {PlotlyComponent} from './components/plotly/plotly.component'
+import {HttpService} from './services/http.service'
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import {PlotlyComponent} from './components/plotly/plotly.component'
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    HttpService
+  ],
   bootstrap: [RootComponent]
 })
 export class AppModule {}
