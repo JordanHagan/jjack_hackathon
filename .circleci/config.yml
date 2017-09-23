@@ -5,11 +5,9 @@ jobs:
       - image: circleci/python:3.6
     steps:
       - checkout
-      - run: sudo apt-get purge nodejs npm
       - run: sudo apt-get update
       - run: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
       - run: sudo apt-get install -y nodejs
-      - run: sudo apt-get install -y npm
       - run: sudo pip install awscli
       - run: sudo npm install -g @angular/cli
       - run: cd jjack-ui && npm install
