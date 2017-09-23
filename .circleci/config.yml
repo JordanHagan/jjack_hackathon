@@ -1,15 +1,20 @@
 version: 2.0
-machine:
-  node:
-    version: 8.5.0
-dependencies:
-  pre:
-    - npm install angular-cli@latest -g
-compile:
-  override:
-    - cd jjack-ui && npm install && ng build
-deployment:
-  prod:
-    branch: master
-    commands:
-      - aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
+jobs:
+  build_and_deploy:
+    working_directory: ~/jjack-ui
+    docker:
+      -image: circleci/node:7.10.0
+    steps:
+      - checkout
+      - run:
+        name: Install Angular CLI
+        command: npm install -g @angular/cli
+      - run:
+        name: Install Libraries
+        command: npm install
+      - run:
+        name: Build
+        command: ng build
+      - deploy:
+        name: Deploy to S3
+        command: aws s3 sync jjack-ui/dist s3://jjack-hackathon/ --delete
