@@ -76,49 +76,49 @@ const apiData = {
   '150': {
     up_date: '2017-05-05',
     agitators: {
-      A: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      B: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      C: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      D: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      E: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      F: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      G: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
+      A: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      B: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      C: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      D: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      E: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      F: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      G: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
     }
   },
   '250': {
     up_date: '2017-05-05',
     agitators: {
-      A: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      B: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      C: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      D: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      E: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      F: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      G: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
+      A: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      B: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      C: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      D: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      E: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      F: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      G: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
     }
   },
   '350': {
     up_date: '2017-05-05',
     agitators: {
-      A: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      B: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      C: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      D: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      E: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      F: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      G: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
+      A: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      B: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      C: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      D: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      E: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      F: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      G: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
     }
   },
   '450': {
     up_date: '2017-05-05',
     agitators: {
-      A: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      B: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      C: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      D: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      E: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      F: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
-      G: {Temperature: 50, Vibrations: 150, 'Compartment Temperature': 25, 'Cooling Water': 100},
+      A: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      B: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      C: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      D: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      E: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      F: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
+      G: {temperature: 50, vibrations: 150, compartmentTemperature: 25, coolingWater: 100, daysToFailure: 10},
     }
   },
 }
@@ -152,9 +152,9 @@ export class HttpService {
       Object.keys(apiData[autoclaveKey].agitators).forEach(agitatorKey => {
         const apiAgitator = apiData[autoclaveKey].agitators[agitatorKey]
         const agitator = {
-          name: agitatorKey, open: false, status: 'healthy', temp: apiAgitator.Temperature,
-          coolingWater: apiAgitator['Cooling Water'], compartmentTemp: apiAgitator['Compartment Temperature'],
-          vibration: apiAgitator.Vibration
+          name: agitatorKey, open: false, status: 'healthy', temp: apiAgitator.temperature,
+          coolingWater: apiAgitator.coolingWater, compartmentTemp: apiAgitator.compartmentTemperature,
+          vibration: apiAgitator.vibration, daysToFailure: apiAgitator.daysToFailure
         }
         agitators.push(agitator)
       })

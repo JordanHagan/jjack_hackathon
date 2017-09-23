@@ -6,4 +6,5 @@ export interface Agitator {
   coolingWater: number
   temp: number
   vibration: number
+  daysToFailure: number
 }
