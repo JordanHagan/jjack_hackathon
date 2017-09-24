@@ -35,7 +35,10 @@ h4 {
 .tabs-title {
   border-top: 1px solid $black;
   border-right: 1px solid $black;
+  border-bottom: 1px solid $black;
   background-color: $white;
+  position: relative;
+  top: 1px;
 
   &:first-child {
     border-left: 1px solid black;
@@ -43,6 +46,7 @@ h4 {
 
   &.is-active {
     background-color: $primary-color;
+    border-bottom-color: $primary-color;
   }
 }
 

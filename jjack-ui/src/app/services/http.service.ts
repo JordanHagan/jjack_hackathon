@@ -10,10 +10,10 @@ import {Injectable} from '@angular/core'
 import {Agitator} from '../models/agitator.model'
 
 const names = {
-  '150': 'Sparky',
-  '250': 'Ragnaros',
-  '350': 'Incendius',
-  '450': 'Trogdor'
+  '150': 'Poliwhirl',
+  '250': 'Hydross',
+  '350': 'King Triton',
+  '450': 'Katara'
 }
 
 const url = 'http://ec2-34-235-196-18.compute-1.amazonaws.com:8105/data'
@@ -67,9 +67,9 @@ export class HttpService {
   }
 
   getStatus(daysToFailure: number): string {
-    if (daysToFailure <= 10) {
+    if (daysToFailure < 5) {
       return 'danger'
-    } else if (daysToFailure <= 25) {
+    } else if (daysToFailure < 15) {
       return 'warning'
     }
     return 'healthy'

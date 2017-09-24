@@ -20,7 +20,10 @@ export class RootComponent implements AfterViewChecked, OnInit {
 
   ngOnInit() {
     this.httpService.get()
-      .subscribe(data => this.autoclaves = data)
+      .subscribe(data => {
+        this.autoclaves = data
+        this.bootstrapped = false
+      })
   }
 
   ngAfterViewChecked() {
