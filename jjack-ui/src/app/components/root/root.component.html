@@ -9,7 +9,7 @@
         <ul class="tabs" data-tabs id="example-tabs">
             <li class="tabs-title"
                 *ngFor="let autoclave of autoclaves; let i = index"
-                [ngClass]="{'is-active': autoclave.selected}">
+                [ngClass]="{'is-active': autoclave.selected, 'red-back': dangerCount(autoclave)}">
                 <a href="#panel{{i}}" (click)="handleTabClick(autoclave)">
                     ({{autoclave.id}}) {{autoclave.name}}
                     <span class="red" *ngIf="dangerCount(autoclave)">[{{dangerCount(autoclave)}}]</span>

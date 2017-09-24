@@ -126,3 +126,7 @@ li {
 .red {
   color: $alert-color;
 }
+
+.red-back {
+  background-color: lighten($alert-color, 40%);
+}
