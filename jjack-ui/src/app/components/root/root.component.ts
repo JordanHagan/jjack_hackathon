@@ -15,6 +15,7 @@ declare const particlesJS: any
 export class RootComponent implements AfterViewChecked, OnInit {
   autoclaves: Autoclave[]
   bootstrapped: boolean
+  showChart: boolean = false
 
   constructor(private httpService: HttpService) {}
 

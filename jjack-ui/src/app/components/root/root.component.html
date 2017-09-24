@@ -24,9 +24,14 @@
          *ngFor="let autoclave of autoclaves"
          [ngClass]="{hidden: !autoclave.selected}">
 
-        <h5>Days Since Last Downtime: {{getDaysSinceDowntime(autoclave.lastStart)}}</h5>
-        <jjack-plotly *ngIf="autoclave.selected" [chartNumber]="autoclave.chartNumber"
+        <h5>Days Since Last Downtime: {{getDaysSinceDowntime(autoclave.lastStart)}}
+            <button class="button float-right" (click)="showChart = !showChart">Toggle Chart</button>
+        </h5><br/>
+        <jjack-plotly *ngIf="!showChart && autoclave.selected" [chartNumber]="autoclave.chartNumber"
                       [height]="500"></jjack-plotly>
+        <div style="text-align: center">
+            <img *ngIf="showChart" src="../../../assets/chart-{{autoclave.chartNumber}}.png" width="800"/>
+        </div>
 
         <ul class="accordion" data-accordion data-allow-all-closed="true">
             <li *ngFor="let agitator of autoclave.agitators"
