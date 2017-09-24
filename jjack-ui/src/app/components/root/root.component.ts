@@ -3,6 +3,7 @@ import {Agitator} from '../../models/agitator.model'
 import {Autoclave} from '../../models/autoclave.model'
 import {HttpService} from '../../services/http.service'
 import {particles} from '../../../assets/particles'
+import * as display from '../../utils/display.utils'
 
 declare const $: any
 declare const particlesJS: any
@@ -16,6 +17,7 @@ export class RootComponent implements AfterViewChecked, OnInit {
   autoclaves: Autoclave[]
   bootstrapped: boolean
   showChart: boolean = false
+  display: any = display
 
   constructor(private httpService: HttpService) {}
 

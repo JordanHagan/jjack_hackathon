@@ -14,12 +14,12 @@
             <td colspan="99" style="text-align: center"><i>All agitators operating within tolerance</i></td>
         </tr>
         <tr *ngFor="let agitator of dangerousAgitators">
-            <td class="emphasize">~{{agitator.daysToFailure}} ({{(agitator.daysToFailure / factor).toFixed()}} to {{(agitator.daysToFailure * factor).toFixed()}}) </td>
+            <td class="emphasize" [innerHTML]="display.daysToFailure(agitator.daysToFailure)"></td>
             <td>{{agitator.autoclave}}</td>
             <td>{{agitator.name}}</td>
-            <td>{{agitator.temp.toFixed(2)}}&deg; C</td>
-            <td>{{agitator.vibration.toFixed(2)}} mm/s</td>
-            <td>{{agitator.coolingWater.toFixed(2)}} m<sup>3</sup>/hr</td>
+            <td [innerHTML]="display.temp(agitator.temp)"></td>
+            <td [innerHTML]="display.vibration(agitator.vibration)"></td>
+            <td [innerHTML]="display.coolingWater(agitator.coolingWater)"></td>
         </tr>
         </tbody>
     </table>

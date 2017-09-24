@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core'
 import {Agitator} from '../../models/agitator.model'
+import * as display from '../../utils/display.utils'
 
 @Component({
   selector: 'jjack-summary',
@@ -8,5 +9,5 @@ import {Agitator} from '../../models/agitator.model'
 })
 export class SummaryComponent {
   @Input() dangerousAgitators: Agitator[]
-  factor: number = 1.8
+  display: any = display
 }

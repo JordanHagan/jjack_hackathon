@@ -26,7 +26,8 @@
 
         <h5>Days Since Last Downtime: {{getDaysSinceDowntime(autoclave.lastStart)}}
             <button class="button float-right" (click)="showChart = !showChart">Toggle Chart</button>
-        </h5><br/>
+        </h5>
+        <br/>
         <jjack-plotly *ngIf="!showChart && autoclave.selected" [chartNumber]="autoclave.chartNumber"
                       [height]="500"></jjack-plotly>
         <div style="text-align: center">
@@ -40,22 +41,23 @@
                 data-accordion-item>
                 <a href="#" class="accordion-title"
                    (click)="handleRowClick($event, agitator)">
-                    <span>Agitator {{agitator.name}}</span> {{agitator.daysToFailure}} days to failure
+                    <span>Agitator {{agitator.name}}</span> Days to Failure:
+                    {{display.daysToFailure(agitator.daysToFailure)}}
                 </a>
                 <div class="accordion-content" data-tab-content>
                     <div class="row columns fields">
                         <div class="fields">
                             <div class="fields-left">Temperature:<br/>Compartment Temperature:</div>
                             <div class="fields-right">
-                                {{agitator.temp.toFixed(2)}}&deg; C<br/>
-                                {{agitator.compartmentTemp.toFixed(2)}}&deg; C
+                                <span [innerHTML]="display.temp(agitator.temp)"></span><br/>
+                                <span [innerHTML]="display.temp(agitator.compartmentTemp)"></span>
                             </div>
                         </div>
                         <div class="fields">
                             <div class="fields-left">Cooling Water:<br/>Vibration:</div>
                             <div class="fields-right">
-                                {{agitator.coolingWater.toFixed(2)}} m<sup>3</sup>/hr<br/>
-                                {{agitator.vibration.toFixed(2)}} mm/s
+                                <span [innerHTML]="display.coolingWater(agitator.coolingWater)"></span><br/>
+                                <span [innerHTML]="display.vibration(agitator.vibration)"></span>
                             </div>
                         </div>
                         <div class="buttons">
