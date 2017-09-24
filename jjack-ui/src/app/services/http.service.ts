@@ -22,14 +22,14 @@ export class HttpService {
   constructor(private http: Http) {}
 
   get(url) {
-    // return this.http.get(url)
-    //   .map(res => res.json())
-    //   .map(res => this.transform(res))
-    //   .catch(err => {
-    //     console.log(err)
-    //     return Observable.of(err)
-    //   })
-    return Observable.of(this.transform({}))
+    return this.http.get(url)
+      .map(res => res.json())
+      .map(res => this.transform(res))
+      .catch(err => {
+        console.log(err)
+        return Observable.of(err)
+      })
+    // return Observable.of(this.transform({}))
   }
 
   transform(res): Autoclave[] {
@@ -57,7 +57,7 @@ export class HttpService {
         name: names[autoclaveKey],
         agitators,
         selected: false,
-        lastStart: new Date(apiAutoclave.up_date)
+        lastStart: new Date(apiAutoclave.upDate)
       }
 
       autoclaves.push(autoclave)
