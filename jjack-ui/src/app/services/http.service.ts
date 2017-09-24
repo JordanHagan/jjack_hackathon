@@ -8,7 +8,6 @@ import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/operator/finally'
 import {Injectable} from '@angular/core'
 import {Agitator} from '../models/agitator.model'
-import {apiData} from '../../assets/sample_data'
 
 const names = {
   '150': 'Sparky',
@@ -17,11 +16,13 @@ const names = {
   '450': 'Trogdor'
 }
 
+const url = 'http://ec2-34-235-196-18.compute-1.amazonaws.com:8105/data'
+
 @Injectable()
 export class HttpService {
   constructor(private http: Http) {}
 
-  get(url) {
+  get() {
     return this.http.get(url)
       .map(res => res.json())
       .map(res => this.transform(res))
@@ -29,14 +30,13 @@ export class HttpService {
         console.log(err)
         return Observable.of(err)
       })
-    // return Observable.of(this.transform({}))
   }
 
   transform(res): Autoclave[] {
     const autoclaves: Autoclave[] = []
-    Object.keys(apiData).forEach(autoclaveKey => {
+    Object.keys(res).forEach(autoclaveKey => {
       const agitators: Agitator[] = []
-      const apiAutoclave = apiData[autoclaveKey]
+      const apiAutoclave = res[autoclaveKey]
       Object.keys(apiAutoclave.agitators).forEach(agitatorKey => {
         const apiAgitator = apiAutoclave.agitators[agitatorKey]
         const agitator = {

@@ -19,8 +19,7 @@ export class RootComponent implements AfterViewChecked, OnInit {
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    const url = 'http://ec2-34-235-196-18.compute-1.amazonaws.com:8105/data'
-    this.httpService.get(url)
+    this.httpService.get()
       .subscribe(data => this.autoclaves = data)
   }
 
