@@ -88,4 +88,8 @@ export class RootComponent implements AfterViewChecked, OnInit {
       .filter(agitator => agitator.status === 'danger')
       .length
   }
+
+  emergency() {
+    $('#particles-js').toggleClass('emergency')
+  }
 }
