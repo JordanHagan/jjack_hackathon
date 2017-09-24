@@ -2,6 +2,7 @@
     <div><h1>Autoclave Dashboard for Pueblo Viejo</h1></div>
     <div>Last updated: {{now()}}</div>
 </div>
+<jjack-summary [dangerousAgitators]="getAgitators('danger')"></jjack-summary>
 
 <div class="row">
     <div class="columns">
@@ -60,7 +61,7 @@
     </div>
 </div>
 
-<div class="footer row columns">
+<div class="row columns footer">
     Created by JJACKZ: Jordan Hagan, Jordan Fallon, Anne Morrow, Christine Buckler, Karen Farbman, Zack Kneupper<br/>
     at <a href="https://unearthed.solutions/hackathons/unearthed-denver-2017/">Unearthed Denver 2017</a>
 </div>

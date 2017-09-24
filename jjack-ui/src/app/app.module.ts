@@ -5,11 +5,13 @@ import {RootComponent} from './components/root/root.component'
 import {PlotlyComponent} from './components/plotly/plotly.component'
 import {HttpService} from './services/http.service'
 import {HttpModule} from '@angular/http'
+import {SummaryComponent} from './components/summary/summary.component'
 
 @NgModule({
   declarations: [
     RootComponent,
-    PlotlyComponent
+    PlotlyComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,

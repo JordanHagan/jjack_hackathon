@@ -63,4 +63,18 @@ export class RootComponent implements AfterViewChecked, OnInit {
     const difference_ms = date2_ms - date1_ms
     return Math.round(difference_ms / one_day)
   }
+
+  getAgitators(status: string) {
+    if(!this.autoclaves) return []
+    return this.autoclaves
+      .map(autoclave => {
+        return autoclave.agitators
+          .filter(agitator => agitator.status === status)
+          .map(agitator => {
+            agitator.autoclave = autoclave.id
+            return agitator
+          })
+      })
+      .reduce((a, b) => a.concat(b))
+  }
 }

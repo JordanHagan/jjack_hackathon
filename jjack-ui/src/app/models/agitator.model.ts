@@ -7,4 +7,5 @@ export interface Agitator {
   temp: number
   vibration: number
   daysToFailure: number
+  autoclave?: string
 }
