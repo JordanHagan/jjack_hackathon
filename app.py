@@ -3,14 +3,17 @@ import pickle
 import pandas as pd
 import numpy as np
 from collections import defaultdict
+from keras.models import load_model
 
 app = Flask(__name__)
 
 with open('2017_dict.pkl','rb') as f:
     test_dict = pickle.load(f)   
     
-# with open('whatever_model.pkl','rb') as g:
-#     model = pickle.load(g)
+with open('pickled_models/scaler_model.pkl','rb') as g:
+    ss = pickle.load(g)
+    
+model = load_model('pickled_models/rnn_model.h5')
 
 
 autoclaves = ['150','250','350','450']
@@ -34,11 +37,11 @@ dct['450']['upDate'] = '2017-02-08'
 
 
 
-for autoclave in autoclaves:
-    for agitator in agitators:
-        scaled = ss.transform(test_dict[autoclave][agitators].values)
-        prediction = model.predict(scaled)
-        dct[autoclave]['agitators'][agitator]['daysToFailure'] = prediction
+# for autoclave in autoclaves:
+#     for agitator in agitators:
+#         scaled = ss.transform(test_dict[autoclave][agitators].values)
+#         prediction = model.predict(scaled)
+#         dct[autoclave]['agitators'][agitator]['daysToFailure'] = prediction
 
     
     
