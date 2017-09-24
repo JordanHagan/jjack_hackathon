@@ -13,6 +13,16 @@
   }
 }
 
+.footer {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: center;
+
+  a {
+    color: $alert-color;
+  }
+}
+
 ul {
   background-color: transparent;
   border: none;
@@ -22,25 +32,17 @@ h4 {
   text-align: left;
 }
 
+.fields {
+  display: flex;
+  justify-content: space-between;
+
+  div {
+    margin: auto;
+  }
+}
+
 .columns {
   padding: 0;
-}
-
-.tabs-content {
-  border: 1px solid $black;
-  padding: 5px;
-  background-color: $primary-color;
-  margin-bottom: 1rem;
-}
-
-.footer {
-  font-size: 14px;
-  margin-bottom: 5px;
-  text-align: center;
-
-  a {
-    color: $alert-color;
-  }
 }
 
 .tabs-title {
@@ -56,17 +58,21 @@ h4 {
   }
 
   &.is-active {
-    background-color: $primary-color;
-    border-bottom-color: $primary-color;
+    border-bottom-color: $white;
   }
+}
+
+.tabs-content {
+  border: 1px solid $black;
+  padding: 5px;
+  background-color: $white;
+  margin-bottom: 1rem;
 }
 
 li {
   a {
     color: black;
     font-size: 15px;
-    display: flex;
-    justify-content: space-between;
     background-color: transparent;
 
     & > div:last-child {
@@ -76,9 +82,8 @@ li {
   }
 }
 
-.accordion-title {
-  display: flex;
-  justify-content: space-between;
+.accordion-title span {
+  padding-right: 25px;
 }
 
 .healthy a {
@@ -111,4 +116,9 @@ li {
 
 .chart-container {
   position: relative;
+}
+
+.fields-left {
+  padding-right: 10px;
+  text-align: right;
 }

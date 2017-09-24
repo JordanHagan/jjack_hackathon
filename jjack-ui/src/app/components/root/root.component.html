@@ -28,19 +28,29 @@
                 data-accordion-item>
                 <a href="#" class="accordion-title"
                    (click)="handleRowClick($event, agitator)">
-                    <div>
-                        <h4>Agitator {{agitator.name}}</h4>
-                        Status: {{agitator.status}}<br/>
-                        Days to Failure: {{agitator.daysToFailure}}
-                    </div>
-                    <div>
-                        Temperature: {{agitator.temp}}&deg;<br/>
-                        Compartment Temperature: {{agitator.compartmentTemp}}&deg;<br/>
-                        Cooling Water: {{agitator.coolingWater}}%<br/>
-                        Vibration: {{agitator.vibration}} GHz
-                    </div>
+                    <span>Agitator {{agitator.name}}</span> {{agitator.daysToFailure}} days to failure
                 </a>
                 <div class="accordion-content" data-tab-content>
+                    <div class="buttons float-right">
+                        <button class="button">Emergency Shut-Off</button>
+                        <button class="button">Schedule Maintenance</button>
+                    </div>
+                    <div class="row columns fields">
+                        <div class="fields">
+                            <div class="fields-left">Temperature:<br/>Compartment Temperature:</div>
+                            <div class="fields-right">
+                                {{agitator.temp.toFixed(2)}}&deg; C<br/>
+                                {{agitator.compartmentTemp.toFixed(2)}}&deg; C
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="fields-left">Cooling Water:<br/>Vibration:</div>
+                            <div class="fields-right">
+                                {{agitator.coolingWater.toFixed(2)}}%<br/>
+                                {{agitator.vibration.toFixed(2)}} mm/s
+                            </div>
+                        </div>
+                    </div>
                     <div class="chart-container spinner">
                         <jjack-plotly *ngIf="agitator.open"></jjack-plotly>
                     </div>
