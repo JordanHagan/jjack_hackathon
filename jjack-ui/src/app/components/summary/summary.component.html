@@ -9,6 +9,9 @@
         <th>Vibration</th>
         </thead>
         <tbody>
+        <tr *ngIf="!dangerousAgitators.length">
+            <td colspan="99" style="text-align: center"><i>All agitators operating within tolerance</i></td>
+        </tr>
         <tr *ngFor="let agitator of dangerousAgitators">
             <td>{{agitator.autoclave}}</td>
             <td>{{agitator.name}}</td>

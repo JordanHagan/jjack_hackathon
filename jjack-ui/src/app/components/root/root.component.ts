@@ -65,7 +65,7 @@ export class RootComponent implements AfterViewChecked, OnInit {
   }
 
   getAgitators(status: string) {
-    if(!this.autoclaves) return []
+    if (!this.autoclaves || !this.autoclaves.length) return []
     return this.autoclaves
       .map(autoclave => {
         return autoclave.agitators
@@ -76,5 +76,10 @@ export class RootComponent implements AfterViewChecked, OnInit {
           })
       })
       .reduce((a, b) => a.concat(b))
+      .sort((a, b) => {
+        if (a.daysToFailure > b.daysToFailure) return 1
+        if (a.daysToFailure < b.daysToFailure) return -1
+        return 0
+      })
   }
 }

@@ -22,6 +22,8 @@
          [ngClass]="{hidden: !autoclave.selected}">
 
         <h5>Days Since Last Downtime: {{getDaysSinceDowntime(autoclave.lastStart)}}</h5>
+        <jjack-plotly *ngIf="autoclave.selected" [url]="'~bucklerchica/72.embed'" [height]="500"></jjack-plotly>
+
         <ul class="accordion" data-accordion data-allow-all-closed="true">
             <li *ngFor="let agitator of autoclave.agitators"
                 class="accordion-item"
@@ -53,7 +55,7 @@
                         </div>
                     </div>
                     <div class="chart-container spinner">
-                        <jjack-plotly *ngIf="agitator.open"></jjack-plotly>
+                        <jjack-plotly *ngIf="agitator.open" [url]="'~bucklerchica/21.embed'" [height]="300"></jjack-plotly>
                     </div>
                 </div>
             </li>

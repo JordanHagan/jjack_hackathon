@@ -67,9 +67,9 @@ export class HttpService {
   }
 
   getStatus(daysToFailure: number): string {
-    if (daysToFailure < 5) {
+    if (daysToFailure < 30) {
       return 'danger'
-    } else if (daysToFailure < 15) {
+    } else if (daysToFailure < 100) {
       return 'warning'
     }
     return 'healthy'
