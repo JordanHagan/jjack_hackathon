@@ -27,4 +27,24 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
+
+  &.emergency {
+    animation: emergency;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+  }
+}
+
+@keyframes emergency {
+  0% {
+    background-color: #7bb66e;
+  }
+
+  50% {
+    background-color: $alert-color;
+  }
+
+  100% {
+    background-color: #7bb66e;
+  }
 }
