@@ -11,13 +11,20 @@ app = Flask(__name__)
 
 CORS(app)
 
+'''first set of test data and models'''
 with open('2017_dict.pkl','rb') as f:
-    test_dict = pickle.load(f)   
+    test_dict = pickle.load(f)    
     
 with open('pickled_models/scaler_model.pkl','rb') as g:
     ss = pickle.load(g)
     
 model = load_model('pickled_models/rnn_model.h5')
+
+
+'''second set of test data and models'''
+with open('input_dict_2.pkl','rb') as h:
+    test_dict_2 = pickle.load(h)
+
 
 
 autoclaves = ['150','250','350','450']
