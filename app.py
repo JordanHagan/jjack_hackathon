@@ -4,8 +4,12 @@ import pandas as pd
 import numpy as np
 from collections import defaultdict
 from keras.models import load_model
+from flask_cors import CORS
+
 
 app = Flask(__name__)
+
+CORS(app)
 
 with open('2017_dict.pkl','rb') as f:
     test_dict = pickle.load(f)   
