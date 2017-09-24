@@ -7,6 +7,7 @@
         <th>Days to Failure</th>
         <th>Temperature</th>
         <th>Vibration</th>
+        <th>Cooling Water</th>
         </thead>
         <tbody>
         <tr *ngIf="!dangerousAgitators.length">
@@ -18,6 +19,7 @@
             <td>{{agitator.daysToFailure}}</td>
             <td>{{agitator.temp.toFixed(2)}}&deg; C</td>
             <td>{{agitator.vibration.toFixed(2)}} mm/s</td>
+            <td>{{agitator.coolingWater.toFixed(2)}} m<sup>3</sup>/hr</td>
         </tr>
         </tbody>
     </table>

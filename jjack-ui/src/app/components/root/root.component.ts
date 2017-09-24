@@ -82,4 +82,10 @@ export class RootComponent implements AfterViewChecked, OnInit {
         return 0
       })
   }
+
+  dangerCount(autoclave: Autoclave) {
+    return autoclave.agitators
+      .filter(agitator => agitator.status === 'danger')
+      .length
+  }
 }

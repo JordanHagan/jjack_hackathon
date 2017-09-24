@@ -10,7 +10,10 @@
             <li class="tabs-title"
                 *ngFor="let autoclave of autoclaves; let i = index"
                 [ngClass]="{'is-active': autoclave.selected}">
-                <a href="#panel{{i}}" (click)="handleTabClick(autoclave)">{{autoclave.name}} ({{autoclave.id}})</a>
+                <a href="#panel{{i}}" (click)="handleTabClick(autoclave)">
+                    ({{autoclave.id}}) {{autoclave.name}}
+                    <span class="red" *ngIf="dangerCount(autoclave)">[{{dangerCount(autoclave)}}]</span>
+                </a>
             </li>
         </ul>
     </div>
@@ -22,7 +25,7 @@
          [ngClass]="{hidden: !autoclave.selected}">
 
         <h5>Days Since Last Downtime: {{getDaysSinceDowntime(autoclave.lastStart)}}</h5>
-        <jjack-plotly *ngIf="autoclave.selected" [url]="'~bucklerchica/72.embed'" [height]="500"></jjack-plotly>
+        <!--<jjack-plotly *ngIf="autoclave.selected" [url]="'~bucklerchica/72.embed'" [height]="500"></jjack-plotly>-->
 
         <ul class="accordion" data-accordion data-allow-all-closed="true">
             <li *ngFor="let agitator of autoclave.agitators"
@@ -34,10 +37,6 @@
                     <span>Agitator {{agitator.name}}</span> {{agitator.daysToFailure}} days to failure
                 </a>
                 <div class="accordion-content" data-tab-content>
-                    <div class="buttons float-right">
-                        <button class="button">Emergency Shut-Off</button>
-                        <button class="button">Schedule Maintenance</button>
-                    </div>
                     <div class="row columns fields">
                         <div class="fields">
                             <div class="fields-left">Temperature:<br/>Compartment Temperature:</div>
@@ -49,13 +48,14 @@
                         <div class="fields">
                             <div class="fields-left">Cooling Water:<br/>Vibration:</div>
                             <div class="fields-right">
-                                {{agitator.coolingWater.toFixed(2)}}%<br/>
+                                {{agitator.coolingWater.toFixed(2)}} m<sup>3</sup>/hr<br/>
                                 {{agitator.vibration.toFixed(2)}} mm/s
                             </div>
                         </div>
-                    </div>
-                    <div class="chart-container spinner">
-                        <jjack-plotly *ngIf="agitator.open" [url]="'~bucklerchica/21.embed'" [height]="300"></jjack-plotly>
+                        <div class="buttons">
+                            <button class="button">Emergency Shut-Off</button>
+                            <button class="button">Schedule Maintenance</button>
+                        </div>
                     </div>
                 </div>
             </li>
