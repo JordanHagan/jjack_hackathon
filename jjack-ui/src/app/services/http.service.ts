@@ -10,10 +10,10 @@ import {Injectable} from '@angular/core'
 import {Agitator} from '../models/agitator.model'
 
 const extraValues = {
-  '150': {chartNumber: 72, name: 'Poliwhirl'},
-  '250': {chartNumber: 72, name: 'Hydross'},
-  '350': {chartNumber: 72, name: 'King Triton'},
-  '450': {chartNumber: 72, name: 'Katara'}
+  '150': {chartNumber: 73, name: 'Poliwhirl'},
+  '250': {chartNumber: 75, name: 'Hydross'},
+  '350': {chartNumber: 76, name: 'King Triton'},
+  '450': {chartNumber: 77, name: 'Katara'}
 }
 
 const url = 'http://ec2-34-235-196-18.compute-1.amazonaws.com:8105/data'
