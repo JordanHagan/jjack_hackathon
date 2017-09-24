@@ -27,9 +27,10 @@ for autoclave in autoclaves:
     for agitator in agitators:
         for feature, i in zip(features,range(3,7)):
             dct[autoclave]['agitators'][agitator][feature] = test_dict[autoclave][agitator][test_dict[autoclave][agitator].columns[i]][-1]
-        scaled = ss.transform(test_dict[autoclave][agitators].values)
+        scaled = ss.transform(test_dict[autoclave][agitator].values)
+        scaled = scaled.reshape((scaled.shape[0], 1, scaled.shape[1]))
         prediction = model.predict(scaled)
-        dct[autoclave]['agitators'][agitator]['daysToFailure'] = prediction
+        dct[autoclave]['agitators'][agitator]['daysToFailure'] = prediction.shape
 dct['150']['upDate'] = '2016-11-23'
 dct['250']['upDate'] = '2017-02-12'
 dct['350']['upDate'] = '2016-11-23'
