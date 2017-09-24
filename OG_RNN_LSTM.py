@@ -55,9 +55,9 @@ class RNN:
     def st_scaler(self):
         print('Scalin Data...')
         X_scaler = StandardScaler()
-        model = X_scaler.fit(self.X_train)
-        with open('scaler_model.pkl','wb') as f:
-            pickle.dump(model,f)
+        scale_model = X_scaler.fit(self.X_train)
+        # with open('og_scaler_model.pkl','wb') as f:
+        #     pickle.dump(scale_model,f)
         self.X_train = X_scaler.transform(self.X_train)
         self.X_test = X_scaler.transform(self.X_test)
 
@@ -76,12 +76,11 @@ class RNN:
     def lstm(self):
         print('LSTMing...')
         self.model = Sequential()
-        self.model.add(LSTM(50, input_shape=(self.X_train.shape[1], self.X_train.shape[2])))
-        self.model.add(Dense(1, activation='relu'))
-        #self.model.add(Dense(1))
+        self.model.add(LSTM(50, input_shape=(self.X_train.shape[1], self.X_train.shape[2]), activation='tanh', recurrent_activation='hard_sigmoid', use_bias=True, kernel_initializer='VarianceScaling', recurrent_initializer='orthogonal', bias_initializer='zeros', dropout=0.2, recurrent_dropout=0.2))
+        self.model.add(Dense(1))
         self.model.compile(loss='mean_squared_logarithmic_error', optimizer='adam')
-        self.history = self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=20, validation_data=(self.X_test, self.y_test))
-        self.model.save('rnn_model.h5')
+        self.history = self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=60, validation_data=(self.X_test, self.y_test))
+        #self.model.save('og_rnn_model.h5')
 
     def get_score(self):
         self.score = self.model.evaluate(self.X_test, self.y_test)
@@ -100,5 +99,5 @@ if __name__ == '__main__':
     rnn.break_out()
     rnn.lstm()
     rnn.get_score()
-    # print("Score: ", rnn.score)
-    # rnn.plots()
+    print("Score: ", rnn.score)
+    rnn.plots()
