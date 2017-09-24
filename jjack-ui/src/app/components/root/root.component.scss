@@ -30,6 +30,17 @@ h4 {
   border: 1px solid $black;
   padding: 5px;
   background-color: $primary-color;
+  margin-bottom: 1rem;
+}
+
+.footer {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: center;
+
+  a {
+    color: $alert-color;
+  }
 }
 
 .tabs-title {
