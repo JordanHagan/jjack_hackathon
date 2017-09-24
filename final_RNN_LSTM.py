@@ -11,6 +11,8 @@ from keras.models import Sequential
 from imblearn.over_sampling import SMOTE
 import datetime
 from matplotlib import pyplot
+import pickle
+from keras.models import load_model
 
 class RNN:
     def __init__(self):
@@ -53,7 +55,10 @@ class RNN:
     def st_scaler(self):
         print('Scalin Data...')
         X_scaler = StandardScaler()
-        self.X_train = X_scaler.fit_transform(self.X_train)
+        model = X_scaler.fit(self.X_train)
+        with open('scaler_model.pkl','wb') as f:
+            pickle.dump(model,f)
+        self.X_train = X_scaler.transform(self.X_train)
         self.X_test = X_scaler.transform(self.X_test)
 
     def break_out(self):
@@ -72,14 +77,11 @@ class RNN:
         print('LSTMing...')
         self.model = Sequential()
         self.model.add(LSTM(50, input_shape=(self.X_train.shape[1], self.X_train.shape[2])))
-        #self.model.add(LSTM(25))
-        self.model.add(Dense(1))
-        self.model.add(Dense(1))
+        self.model.add(Dense(1, activation='relu'))
+        #self.model.add(Dense(1))
         self.model.compile(loss='mean_squared_logarithmic_error', optimizer='adam')
-        #self.model.add(Conv1D(64, 5, activation='relu'))
-        #self.model.add(LSTM(128, dropout=0.2, recurrent_dropout=0.2))
-        #self.model.add(Dense(6, activation='softmax'))
-        self.history = self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=40, validation_data=(self.X_test, self.y_test))
+        self.history = self.model.fit(self.X_train, self.y_train, batch_size=128, epochs=20, validation_data=(self.X_test, self.y_test))
+        self.model.save('rnn_model.h5')
 
     def get_score(self):
         self.score = self.model.evaluate(self.X_test, self.y_test)
@@ -94,9 +96,9 @@ class RNN:
 if __name__ == '__main__':
     rnn = RNN()
     rnn.df_from_csv()
-    rnn.min_max_scaler()
+    rnn.st_scaler()
     rnn.break_out()
     rnn.lstm()
     rnn.get_score()
-    print("Score: ", rnn.score)
-    rnn.plots()
+    # print("Score: ", rnn.score)
+    # rnn.plots()
