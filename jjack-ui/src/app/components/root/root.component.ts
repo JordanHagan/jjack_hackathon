@@ -77,11 +77,13 @@ export class RootComponent implements AfterViewChecked, OnInit {
           })
       })
       .reduce((a, b) => a.concat(b))
-      .sort((a, b) => {
-        if (a.daysToFailure > b.daysToFailure) return 1
-        if (a.daysToFailure < b.daysToFailure) return -1
-        return 0
-      })
+      .sort(this.byDaysToFailure)
+  }
+
+  byDaysToFailure(a: Agitator, b: Agitator) {
+    if (a.daysToFailure > b.daysToFailure) return 1
+    if (a.daysToFailure < b.daysToFailure) return -1
+    return 0
   }
 
   dangerCount(autoclave: Autoclave) {

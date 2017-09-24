@@ -6,3 +6,17 @@
   border: 1px solid black;
   margin-bottom: 10px;
 }
+
+.emphasize {
+  background-color: $alert-color;
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(odd) .emphasize {
+    background-color: lighten($alert-color, 20%)
+}
+
+tr:nth-child(even) .emphasize {
+    background-color: lighten($alert-color, 10%)
+}

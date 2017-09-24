@@ -2,9 +2,9 @@
     <h3>Agitators near failure</h3>
     <table>
         <thead>
+        <th class="emphasize">Days to Failure</th>
         <th>Autoclave</th>
         <th>Agitator</th>
-        <th>Days to Failure</th>
         <th>Temperature</th>
         <th>Vibration</th>
         <th>Cooling Water</th>
@@ -14,9 +14,9 @@
             <td colspan="99" style="text-align: center"><i>All agitators operating within tolerance</i></td>
         </tr>
         <tr *ngFor="let agitator of dangerousAgitators">
+            <td class="emphasize">~{{agitator.daysToFailure}} ({{(agitator.daysToFailure / factor).toFixed()}} to {{(agitator.daysToFailure * factor).toFixed()}}) </td>
             <td>{{agitator.autoclave}}</td>
             <td>{{agitator.name}}</td>
-            <td>{{agitator.daysToFailure}}</td>
             <td>{{agitator.temp.toFixed(2)}}&deg; C</td>
             <td>{{agitator.vibration.toFixed(2)}} mm/s</td>
             <td>{{agitator.coolingWater.toFixed(2)}} m<sup>3</sup>/hr</td>

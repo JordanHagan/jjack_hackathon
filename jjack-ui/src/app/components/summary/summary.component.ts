@@ -8,4 +8,5 @@ import {Agitator} from '../../models/agitator.model'
 })
 export class SummaryComponent {
   @Input() dangerousAgitators: Agitator[]
+  factor: number = 1.8
 }

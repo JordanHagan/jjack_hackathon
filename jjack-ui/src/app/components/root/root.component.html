@@ -34,7 +34,7 @@
         </div>
 
         <ul class="accordion" data-accordion data-allow-all-closed="true">
-            <li *ngFor="let agitator of autoclave.agitators"
+            <li *ngFor="let agitator of autoclave.agitators.sort(byDaysToFailure)"
                 class="accordion-item"
                 [ngClass]="agitator.status"
                 data-accordion-item>
