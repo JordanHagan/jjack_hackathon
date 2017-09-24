@@ -25,7 +25,7 @@ export class RootComponent implements AfterViewChecked, OnInit {
   ngAfterViewChecked() {
     if (!this.bootstrapped) {
       $(document).foundation()
-      particlesJS('particles-js', particles);
+      particlesJS('particles-js', particles)
     }
     this.bootstrapped = true
   }
@@ -49,5 +49,14 @@ export class RootComponent implements AfterViewChecked, OnInit {
       agitators.forEach(agitator => agitator.open = false)
       agitator.open = true
     }
+  }
+
+  getDaysSinceDowntime(lastStart: Date) {
+    const today = new Date()
+    const one_day = 1000 * 60 * 60 * 24
+    const date1_ms = lastStart.getTime()
+    const date2_ms = today.getTime()
+    const difference_ms = date2_ms - date1_ms
+    return Math.round(difference_ms / one_day)
   }
 }

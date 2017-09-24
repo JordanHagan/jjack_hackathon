@@ -20,7 +20,7 @@
          *ngFor="let autoclave of autoclaves"
          [ngClass]="{hidden: !autoclave.selected}">
 
-        <h5>Current uptime: {{autoclave.lastStart.toLocaleDateString()}} days</h5>
+        <h5>Days Since Last Downtime: {{getDaysSinceDowntime(autoclave.lastStart)}}</h5>
         <ul class="accordion" data-accordion data-allow-all-closed="true">
             <li *ngFor="let agitator of autoclave.agitators"
                 class="accordion-item"
