@@ -1,18 +1,26 @@
-import {Component, Input} from '@angular/core'
-import {DomSanitizer} from '@angular/platform-browser'
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core'
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser'
 
 @Component({
   selector: 'jjack-plotly',
   templateUrl: './plotly.component.html',
   styleUrls: ['./plotly.component.scss']
 })
-export class PlotlyComponent {
+export class PlotlyComponent implements OnChanges {
+  url: SafeResourceUrl
+
   constructor(private sanitizer: DomSanitizer) {}
 
-  @Input() url: string
+  @Input() chartNumber: string
   @Input() height: number
 
-  getUrl() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://plot.ly/${this.url}`)
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes.chartNumber.currentValue) {
+      this.updateUrl(changes.chartNumber.currentValue)
+    }
+  }
+
+  updateUrl(number: number) {
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(`https://plot.ly/~bucklerchica/${number}.embed`)
   }
 }

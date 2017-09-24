@@ -3,6 +3,7 @@ import {Autoclave} from '../app/models/autoclave.model'
 export const fixtureData: Autoclave[] = [
   {
     name: 'Sparky',
+    chartNumber: 72,
     id: '150',
     selected: true,
     lastStart: new Date(),
@@ -81,6 +82,7 @@ export const fixtureData: Autoclave[] = [
   },
   {
     name: 'Trogdor',
+    chartNumber: 72,
     id: '250',
     selected: false,
     lastStart: new Date(),
@@ -159,6 +161,7 @@ export const fixtureData: Autoclave[] = [
   },
   {
     name: 'Ragnaros',
+    chartNumber: 72,
     id: '350',
     selected: false,
     lastStart: new Date(),
@@ -237,6 +240,7 @@ export const fixtureData: Autoclave[] = [
   },
   {
     name: 'Incendius',
+    chartNumber: 72,
     id: '450',
     selected: false,
     lastStart: new Date(),
